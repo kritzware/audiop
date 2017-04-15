@@ -1,0 +1,17 @@
+{
+  "name": "audiop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron start.js"
+  },
+  "repository": "",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "electron": "~1.6.2",
+    "mocha": "^3.2.0"
+  }
+}
