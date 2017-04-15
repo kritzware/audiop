@@ -5,7 +5,7 @@
 ```bash
 $ git clone https://github.com/kritzware/audiop
 $ cd audiop 
-$ npm install
+$ yarn
 ```
 
 Run the app with
