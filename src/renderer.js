@@ -5,7 +5,7 @@ require.extensions['.html'] = function (module, filename) {
     module.exports = fs.readFileSync(filename, 'utf8')
 }
 
-document.getElementById('main-app').innerHTML = require('./app/views/main.html')
+document.getElementById('app').innerHTML = require('./app/views/main.html')
 
 const App = new Vue({
   el: '#app',
