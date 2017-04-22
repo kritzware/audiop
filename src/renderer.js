@@ -1,5 +1,6 @@
 const fs = require('fs')
 const { dialog } = require('electron').remote
+const id3 = require('id3js')
 
 require.extensions['.html'] = function (module, filename) {
     module.exports = fs.readFileSync(filename, 'utf8')
@@ -13,7 +14,8 @@ const App = new Vue({
     return {
       name: null,
       radio_info: null,
-      loading: true
+      loading: true,
+      metadata: null
     }
   },
   methods: {
@@ -23,6 +25,16 @@ const App = new Vue({
       })
 
       const audio = document.getElementById('test')
+
+      id3({
+        file: file[0],
+        type: id3.OPEN_LOCAL
+      }, (err, tags) => {
+        if(err) console.error(err)
+        else {
+          this.metadata = tags
+        }
+      })
 
       audio.src = file[0]
       this.name = file[0]
@@ -38,7 +50,7 @@ const App = new Vue({
       const radio = document.getElementById('radio')
       radio.src = 'http://stream-relay-geo.ntslive.net/stream?t=1492871913945'
       radio.volume = 0.2
-      radio.autoplay = true
+      radio.autoplay = false
       this.loading = false
     })
     .catch(err => console.error(err))

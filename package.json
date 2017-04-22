@@ -13,5 +13,8 @@
   "devDependencies": {
     "electron": "~1.6.2",
     "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "id3js": "^1.1.3"
   }
 }

@@ -7,6 +7,9 @@
   <audio id="test" controls>
       Your browser does not support HTML5 audio.
   </audio>
+  <div v-if="metadata">
+    <pre>{{ metadata }}</pre>
+  </div>
 
   <br>
 
@@ -15,7 +18,7 @@
   </audio>
 
   </div v-if="!loading">
-    {{ radio_info }}
+    <pre>{{ radio_info }}</pre>
   </div>
 
 </div>
