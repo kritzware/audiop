@@ -11,7 +11,9 @@ const App = new Vue({
   el: '#app',
   data() {
     return {
-      name: null
+      name: null,
+      radio_info: null,
+      loading: true
     }
   },
   methods: {
@@ -27,5 +29,18 @@ const App = new Vue({
       audio.volume = 0.2
       audio.autoplay = true
     }
+  },
+  mounted() {
+    fetch('http://www.nts.live/schedule/nowPlaying?timezone=Europe%2FLondon')
+    .then(res => res.json())
+    .then(res => {
+      this.radio_info = res
+      const radio = document.getElementById('radio')
+      radio.src = 'http://stream-relay-geo.ntslive.net/stream?t=1492871913945'
+      radio.volume = 0.2
+      radio.autoplay = true
+      this.loading = false
+    })
+    .catch(err => console.error(err))
   }
 })
